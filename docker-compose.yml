@@ -5,8 +5,16 @@ services:
     restart: always
     ports:
       - "8092:8092"
-    network_mode: bridge
     environment:
       - HOSTNAME=0.0.0.0
       - NODE_ENV=production
       - PORT=8092
+    networks:
+      - default
+      - cloudflared
+
+networks:
+  default:
+    driver: bridge
+  cloudflared:
+    external: true
