@@ -1,65 +1,80 @@
+"use client";
+
 import Image from "next/image";
+import { useLanguage } from "@/lib/LanguageContext";
 
 export default function Home() {
+  const { t } = useLanguage();
+  const logoUrl =
+    process.env.NEXT_PUBLIC_FIFREX_LOGO_URL || "https://r2.or-gm.com/fifrex.png";
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+    <div className="flex min-h-screen flex-col items-center justify-center px-4 py-16">
+      {/* Logo */}
+      <div className="mb-8">
         <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
+          src={logoUrl}
+          alt="Fifrex Dev Logo"
+          width={250}
+          height={250}
           priority
+          className="drop-shadow-2xl"
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+      </div>
+
+      {/* Title */}
+      <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white text-center mb-4 font-[family-name:var(--font-cinzel)]">
+        {t.title}
+      </h1>
+
+      {/* Subtitle */}
+      <p className="text-xl sm:text-2xl md:text-3xl text-[#c9aa71] text-center mb-12 font-[family-name:var(--font-cinzel)]">
+        {t.subtitle}
+      </p>
+
+      {/* Description */}
+      <div className="max-w-2xl text-center mb-8">
+        <p className="text-gray-300 text-base sm:text-lg mb-8">{t.description}</p>
+
+        {/* Features */}
+        <div className="text-left bg-black/30 rounded-lg p-6 mb-8">
+          <h2 className="text-xl text-[#c9aa71] mb-4 font-[family-name:var(--font-cinzel)]">
+            {t.features.title}
+          </h2>
+          <ul className="space-y-3 text-gray-300">
+            <li className="flex items-start gap-2">
+              <span className="text-[#c9aa71]">•</span>
+              {t.features.matchHistory}
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-[#c9aa71]">•</span>
+              {t.features.publicProfile}
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-[#c9aa71]">•</span>
+              {t.features.stats}
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-[#c9aa71]">•</span>
+              {t.features.heroStats}
+            </li>
+          </ul>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
+
+        {/* Contact */}
+        <div className="text-center">
+          <h2 className="text-xl text-[#c9aa71] mb-2 font-[family-name:var(--font-cinzel)]">
+            {t.contact.title}
+          </h2>
+          <p className="text-gray-400 mb-2">{t.contact.text}</p>
           <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="mailto:xaviergm1013@gmail.com"
+            className="text-[#c9aa71] hover:text-white transition-colors text-lg font-medium"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
+            xaviergm1013@gmail.com
           </a>
         </div>
-      </main>
+      </div>
     </div>
   );
 }

@@ -1,0 +1,35 @@
+# Dependencies
+node_modules
+npm-debug.log
+
+# Next.js
+.next
+out
+
+# Git
+.git
+.gitignore
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# Environment files (handled via build args)
+.env
+.env.local
+.env.development
+.env.production
+
+# Documentation and misc
+README.md
+*.md
+!package.json
+
+# Ralph and tasks
+ralph/
+tasks/
+
+# Claude
+.claude/

@@ -1,0 +1,174 @@
+{
+  "project": "Discord Dota Web",
+  "branchName": "ralph/discord-dota-landing",
+  "description": "Landing page para bot de Discord Fifrex Dev con temática Dota 2, selector de idioma ES/EN, y despliegue Docker",
+  "userStories": [
+    {
+      "id": "US-001",
+      "title": "Inicializar proyecto Next.js con TypeScript y Tailwind",
+      "description": "Como desarrollador, necesito un proyecto Next.js configurado con TypeScript, Tailwind CSS y estructura de carpetas básica.",
+      "acceptanceCriteria": [
+        "Proyecto Next.js 14+ inicializado con App Router",
+        "TypeScript configurado correctamente",
+        "Tailwind CSS instalado y configurado",
+        "Estructura de carpetas creada: app/, components/, public/",
+        "Archivo .env.example creado con NEXT_PUBLIC_BACKGROUND_URL y NEXT_PUBLIC_FIFREX_LOGO_URL",
+        "Archivo .env.local creado con valores por defecto (NEXT_PUBLIC_FIFREX_LOGO_URL=https://r2.or-gm.com/fifrex.png)",
+        "Typecheck passes"
+      ],
+      "priority": 1,
+      "passes": true,
+      "notes": "Completado: Next.js 14+, TypeScript, Tailwind, estructura de carpetas, .env.example y .env.local"
+    },
+    {
+      "id": "US-002",
+      "title": "Implementar layout base con fondo oscuro y imagen de Dota 2",
+      "description": "Como usuario, quiero ver un fondo negro con imagen temática de Dota 2 con opacidad reducida.",
+      "acceptanceCriteria": [
+        "Layout principal en app/layout.tsx con fondo negro (#0a0a0a)",
+        "Imagen de fondo cargada desde NEXT_PUBLIC_BACKGROUND_URL via CSS background-image",
+        "Imagen con opacidad reducida (0.3-0.4) para no interferir con contenido",
+        "Fondo fijo que cubre toda la pantalla (min-h-screen, background-fixed)",
+        "Fuente Cinzel de Google Fonts configurada para tipografía gaming",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 2,
+      "passes": true,
+      "notes": "Completado: Layout con fondo #0a0a0a, imagen via env var, overlay 70% opacidad, Cinzel font"
+    },
+    {
+      "id": "US-003",
+      "title": "Crear componente de selector de idioma ES/EN",
+      "description": "Como usuario, quiero un selector de idioma para cambiar entre español e inglés.",
+      "acceptanceCriteria": [
+        "Componente LanguageSelector en components/LanguageSelector.tsx",
+        "Botones ES/EN con estilo visual coherente (dorado/blanco sobre fondo oscuro)",
+        "Estado de idioma manejado con React Context (LanguageContext)",
+        "Idioma por defecto: español",
+        "Idioma persiste en localStorage",
+        "Archivo de traducciones en lib/translations.ts con textos en ES e EN",
+        "Typecheck passes"
+      ],
+      "priority": 3,
+      "passes": true,
+      "notes": "Completado: LanguageSelector, LanguageContext con localStorage, translations.ts con ES/EN"
+    },
+    {
+      "id": "US-004",
+      "title": "Mostrar logo y título principal centrados",
+      "description": "Como usuario, quiero ver el logo de Fifrex Dev y el texto 'Fifrex Dev en desarrollo' centrados.",
+      "acceptanceCriteria": [
+        "Logo cargado desde NEXT_PUBLIC_FIFREX_LOGO_URL usando next/image",
+        "Logo centrado horizontalmente con tamaño apropiado (200-300px)",
+        "Texto 'Fifrex Dev' en letras grandes (text-4xl o mayor) con fuente Cinzel",
+        "Texto 'En Desarrollo' / 'In Development' debajo según idioma seleccionado",
+        "Colores: texto principal blanco, subtítulo dorado (#c9aa71)",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 4,
+      "passes": true,
+      "notes": "Completado: Logo 250px con next/image, título text-5xl/6xl, subtítulo dorado #c9aa71"
+    },
+    {
+      "id": "US-005",
+      "title": "Mostrar descripción del bot y correo de contacto",
+      "description": "Como usuario, quiero leer la descripción del bot y ver el correo del desarrollador.",
+      "acceptanceCriteria": [
+        "Sección de descripción debajo del título con funcionalidades del bot",
+        "Funcionalidades listadas: datos de partidas, perfiles públicos, stats de 20 partidas, records por héroe",
+        "Texto traducido según idioma seleccionado",
+        "Correo xaviergm1013@gmail.com como enlace mailto: clickeable",
+        "Estilo visual: texto gris claro, correo resaltado",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 5,
+      "passes": true,
+      "notes": "Completado: Descripcion con features listadas, mailto link, texto gris claro, correo dorado"
+    },
+    {
+      "id": "US-006",
+      "title": "Integrar selector de idioma en página principal",
+      "description": "Como usuario, quiero que el selector de idioma esté visible y funcional en la página.",
+      "acceptanceCriteria": [
+        "LanguageSelector posicionado en esquina superior derecha",
+        "LanguageProvider envuelve la aplicación en layout.tsx",
+        "Cambiar idioma actualiza todo el texto sin recargar página",
+        "Página principal (app/page.tsx) usa el hook useLanguage para textos",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 6,
+      "passes": true,
+      "notes": "Completado: LanguageSelector en esquina superior derecha, Providers wrapper, useLanguage en page.tsx"
+    },
+    {
+      "id": "US-007",
+      "title": "Implementar diseño responsive para móviles",
+      "description": "Como usuario móvil, quiero que la página se vea bien en mi dispositivo.",
+      "acceptanceCriteria": [
+        "Layout se adapta a pantallas móviles (< 768px) usando clases Tailwind responsive",
+        "Logo redimensiona a 150px en móvil",
+        "Texto ajusta tamaño en móvil (text-2xl en vez de text-4xl)",
+        "Selector de idioma accesible en móvil",
+        "Sin scroll horizontal en ningún breakpoint",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 7,
+      "passes": true,
+      "notes": "Completado: Clases responsive sm/md, texto 4xl->5xl->6xl, px-4, selector fixed top-4 right-4"
+    },
+    {
+      "id": "US-008",
+      "title": "Configurar metadatos SEO y Open Graph",
+      "description": "Como desarrollador, quiero metadatos correctos para SEO y previsualizaciones en redes.",
+      "acceptanceCriteria": [
+        "Título de página: 'Fifrex Dev - Discord Dota 2 Bot'",
+        "Meta description configurada describiendo el bot",
+        "Open Graph tags: og:title, og:description, og:image",
+        "Favicon configurado en app/favicon.ico o usando logo de Fifrex",
+        "Metadata exportada desde app/layout.tsx usando Next.js metadata API",
+        "Typecheck passes"
+      ],
+      "priority": 8,
+      "passes": true,
+      "notes": "Completado: Metadata con OG tags, Twitter cards, keywords, authors, favicon"
+    },
+    {
+      "id": "US-009",
+      "title": "Crear Dockerfile multi-stage para producción",
+      "description": "Como desarrollador, quiero empaquetar la app en Docker para despliegue.",
+      "acceptanceCriteria": [
+        "Dockerfile con build multi-stage (deps, builder, runner)",
+        "Imagen base: node:20-alpine",
+        "Build de Next.js en modo standalone",
+        "Imagen final expone puerto 8092",
+        "Variables de entorno NEXT_PUBLIC_* configurables en build time",
+        "Archivo .dockerignore creado para excluir node_modules, .git, etc.",
+        "Build exitoso con docker build -t test ."
+      ],
+      "priority": 9,
+      "passes": true,
+      "notes": "Completado: Dockerfile 3-stage (deps, builder, runner), node:20-alpine, standalone, port 8092, .dockerignore"
+    },
+    {
+      "id": "US-010",
+      "title": "Crear Makefile para build y push a registro",
+      "description": "Como desarrollador, quiero comandos make simples para construir y subir la imagen.",
+      "acceptanceCriteria": [
+        "Makefile con variable REGISTRY=orgmcr.or-gm.com/osmargm1202/discord-dota-web",
+        "Comando 'make build' construye imagen con tag latest",
+        "Comando 'make push' sube imagen al registro privado",
+        "Comando 'make all' ejecuta build y push",
+        "Tag configurable via variable TAG (default: latest)",
+        "Makefile documentado con comentarios"
+      ],
+      "priority": 10,
+      "passes": true,
+      "notes": "Completado: Makefile con build, push, all, clean, help. TAG configurable, comentarios incluidos"
+    }
+  ]
+}
