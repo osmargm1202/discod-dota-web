@@ -1,0 +1,16 @@
+services:
+  discord-dota-web:
+    image: orgmcr.or-gm.com/osmargm1202/discord-dota-web:latest
+    container_name: discord-dota-web
+    restart: always
+    ports:
+      - "8092:8092"
+    environment:
+      - NODE_ENV=production
+      - PORT=8092
+    networks:
+      - cloudflared
+
+networks:
+  cloudflared:
+    external: true
